@@ -1,3 +1,5 @@
+//7510 고급수학 문제풀이
+
 #include <iostream>
 
 using namespace std;
