@@ -1,39 +1,37 @@
-//7510 고급수학 문제풀이
+//19572 small
 
 #include <iostream>
 
 using namespace std;
 
-bool x(int a, int b, int c)
+void f(int a, int b, int c)
 {
-    bool k = false;
-
-    k |= a*a == b*b + c*c;
-    k |= b*b == a*a + c*c;
-    k |= c*c == b*b + a*a;
-
-    return k;
-
+    double s = double(a+b+c)/2;
+    double a1,b1,c1;
+    if(s>a && s>b && s>c)
+    {
+        a1=s-c;
+        b1=s-b;
+        c1=s-a;
+        cout << 1 << endl;
+        cout << fixed;
+        cout.precision(1);
+        cout << a1 << " " << b1 
+        << " " << c1 << " " ;
+    }
+    else
+    {
+        cout << "-1";
+    }
+    
 }
+
 int main()
 {
-    int n;
-    cin >> n;
-    int a[3][n];
-    
-    for(int i=0;i<n;i++)
-    {
-        cin >> a[0][i] >> a[1][i] >> a[2][i];
+    int a,b,c;
+    cin >> a >> b >> c;
 
-        cout << "Scenario #" << i+1 << ":" <<endl;
-        if(x(a[0][i],a[1][i],a[2][i]))
-            cout << "yes" << endl;
-        else
-            cout << "no" << endl;
-        
-        cout << endl;
-            
-    }
+    f(a,b,c);
 
     return 0;
 }
