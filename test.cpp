@@ -1,54 +1,30 @@
-//1967 트리의 지름
+//1463 1로 만들기
 
 #include <iostream>
-#include <vector>
-#include <string.h>
+
 using namespace std;
-
-vector<pair<int,int> > node[100001];
-int visited[100001]={0};
-int n;
-int ans=0;
-int end_point=0;
-void dfs(int point, int length)
+int sum = 0;
+void f(int a, int s)
 {
-    if(visited[point])
+
+    if(sum!=0&&s>sum)
         return;
+    if(a==1)
+    {
+        sum=s;
+        return;
+    }
+    if(a%3==0)
+        f(a/3,s+1);
+    if(a%2==0)
+        f(a/2,s+1);
+    f(a-1,s+1);
     
-    visited[point] = 1;
-    if(ans<length)
-    {
-        ans=length;
-        end_point=point;
-    }
-
-    for(int i=0;i<node[point].size();i++)
-    {
-        dfs(node[point][i].first,length+node[point][i].second);
-    }
-
 }
 int main()
 {
     int n;
     cin >> n;
-    int a,b;
-    int parent,child,length;
-    for(int i=0;i<n-1;i++)
-    {
-        cin >> parent >> child >> length;
-        node[parent].push_back(make_pair(child,length));
-        node[child].push_back(make_pair(parent,length));
-    }
-
-    dfs(1,0);
-    a=end_point;
-    ans = 0;
-    memset(visited,0,sizeof(visited));
-    dfs(end_point,0);
-
-    b=end_point;
-    cout << ans << endl;
-    // << " " << a << " " << b<<endl;
-    return 0;
+    f(n,0);
+    cout << sum;
 }
