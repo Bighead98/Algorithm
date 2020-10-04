@@ -1,30 +1,33 @@
-//1463 1로 만들기
+//11055 가장 큰 증가 부분 수열 실버 2
 
 #include <iostream>
 
 using namespace std;
+int n;
 int sum = 0;
-void f(int a, int s)
+int num[1001];
+int d[1001] = {0};
+void f(int a)
 {
-
-    if(sum!=0&&s>sum)
+    d[a]=num[a];
+    if(a>n)
         return;
-    if(a==1)
+    int k=0;
+    for(int i=0;i<a;i++)
     {
-        sum=s;
-        return;
+        if(num[i]<num[a])
+            k=num[a]+d[i];
+        d[a] = max(k,d[a]);
     }
-    if(a%3==0)
-        f(a/3,s+1);
-    if(a%2==0)
-        f(a/2,s+1);
-    f(a-1,s+1);
-    
+    sum = max(sum,d[a]);
+    f(a+1);
+
 }
 int main()
 {
-    int n;
     cin >> n;
-    f(n,0);
+    for(int i=0;i<n;i++)
+        cin >> num[i];
+    f(0);
     cout << sum;
 }
