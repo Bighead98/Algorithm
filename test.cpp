@@ -1,4 +1,4 @@
-//15963 CASIO 브론즈4
+//15964 이상한 기호 브론즈5
 
 #include <iostream>
 
@@ -8,9 +8,6 @@ int main()
 {
     long long n,m;
     cin >> n >> m;
-    if(n==m)
-        cout << 1;
-    else
-        cout << 0;
+    cout << (n+m)*(n-m);
     return 0;
 }
