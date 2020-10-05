@@ -1,4 +1,4 @@
-//15962 새로운 시작 브론즈 5
+//15963 CASIO 브론즈4
 
 #include <iostream>
 
@@ -6,6 +6,11 @@ using namespace std;
 
 int main()
 {
-    cout << "파이팅!!";
+    long long n,m;
+    cin >> n >> m;
+    if(n==m)
+        cout << 1;
+    else
+        cout << 0;
     return 0;
 }
